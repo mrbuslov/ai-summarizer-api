@@ -22,11 +22,11 @@ class SummarizePDF(APIView):
         reader = PdfReader(pdf_file)
         pages = reader.pages
 
-        # if len(pages) > MAX_PDF_FILE_PAGES_NUM:
-        #     return Response({
-        #         "error": "Max pages limit exceeded. Max number of pages: " + str(MAX_PDF_FILE_PAGES_NUM)},
-        #         status=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE
-        #     )
+        if len(pages) > MAX_PDF_FILE_PAGES_NUM:
+            return Response({
+                "error": "Max pages limit exceeded. Max number of pages: " + str(MAX_PDF_FILE_PAGES_NUM)},
+                status=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE
+            )
 
         text = ""
         for page in pages:

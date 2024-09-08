@@ -37,6 +37,5 @@ def summarize_text(text: str) -> str:
             summarized.append(model.invoke(chunk, runnable=chain))
     else:
         summarized = [model.invoke(text, runnable=chain)]
-    print('summarized: ', summarized)
 
     return '\n\n'.join(summarized)

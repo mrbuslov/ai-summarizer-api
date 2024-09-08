@@ -11,3 +11,5 @@ This REST API allows users to upload a 1-page PDF file and returns a summarized 
 Go to [http://localhost:8000/swagger/](http://localhost:8000/swagger/) -> click on `/summarize/` endpoint -> Try It out -> upload `file_test.pdf` -> Execute
 
 # How to run Tests
+- `docker compose up --build`
+- `docker compose exec web python manage.py test`
