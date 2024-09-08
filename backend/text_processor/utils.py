@@ -1,13 +1,20 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from tiktoken.core import Encoding
 from text_processor.consts import SUMMARIZING_PROMPT
-from text_processor.schema import GPTModelName, GPT_MODELS, GPTModel
+from text_processor.schemas import GPTModelName, GPTModel
+from tiktoken.core import Encoding
+
+GPT_MODELS = {
+    "gpt-3.5-turbo": GPTModel(name=GPTModelName.GPT_3_5_TURBO, temperature=0.9, max_input_tokens=16385),
+    "gpt-4o": GPTModel(name=GPTModelName.GPT_4O, temperature=0.9, max_input_tokens=128000),
+    "gpt-4o-mini": GPTModel(name=GPTModelName.GPT_4O_MINI, temperature=0.9, max_input_tokens=128000),
+}
 
 
 def num_tokens_from_string(string: str, encoding: Encoding) -> int:
     """Returns the number of tokens in a text string."""
     return len(encoding.encode(string))
+
 
 def split_string_up_to_token_limit(
         text: str,

@@ -32,10 +32,3 @@ class GPTModel:
         if runnable is not None:
             return runnable.invoke({"text": text}).content
         return self.llm_instance.invoke(text).content
-
-
-GPT_MODELS = {
-    "gpt-3.5-turbo": GPTModel(name=GPTModelName.GPT_3_5_TURBO, temperature=0.9, max_input_tokens=16385),
-    "gpt-4o": GPTModel(name=GPTModelName.GPT_4O, temperature=0.9, max_input_tokens=128000),
-    "gpt-4o-mini": GPTModel(name=GPTModelName.GPT_4O, temperature=0.9, max_input_tokens=128000),
-}
